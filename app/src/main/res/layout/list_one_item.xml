@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    >
+
+
+<com.daimajia.swipe.SwipeLayout
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="100dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#FF5534"
+        android:gravity="center"
+        android:tag="Bottom3"
+        >
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorGray"
+            android:text="Delete It? "
+            android:paddingRight="250dp"
+            android:textColor="#FF5534" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLinen"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_point"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ctn_sendmessage_arrow1" />
+
+        <EditText
+            android:id="@+id/tv_title"
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:lines="1"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/add" />
+    </LinearLayout>
+
+</com.daimajia.swipe.SwipeLayout>
+
+</RelativeLayout>
