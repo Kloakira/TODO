@@ -1,75 +1,67 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:layout_height="60dp"
+    android:background="@color/colorLinen"
     >
 
 
-<com.daimajia.swipe.SwipeLayout
-    xmlns:swipe="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipe"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    swipe:leftEdgeSwipeOffset="0dp"
-    swipe:rightEdgeSwipeOffset="100dp">
-
-
-    <LinearLayout
+    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:swipe="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#FF5534"
-        android:gravity="center"
-        android:tag="Bottom3"
-        >
+        android:layout_height="60dp"
+        swipe:leftEdgeSwipeOffset="10dp"
+        swipe:rightEdgeSwipeOffset="100dp"
+        swipe:bottomEdgeSwipeOffset="5dp">
 
-        <Button
-            android:id="@+id/btn_delete"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/colorGray"
-            android:text="Delete It? "
-            android:paddingRight="250dp"
-            android:textColor="#FF5534" />
-    </LinearLayout>
+            android:layout_height="60dp"
+            android:background="#FF5534"
+            android:gravity="center"
+            android:tag="Bottom3">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorLinen"
-        android:gravity="center">
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorGray"
+                android:paddingRight="250dp"
+                android:text="Delete It? "
+                android:textColor="#FF5534" />
+        </LinearLayout>
+        <LinearLayout
 
-        <ImageView
-            android:id="@+id/iv_point"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/ctn_sendmessage_arrow1" />
-
-        <EditText
-            android:id="@+id/tv_title"
-            android:layout_width="330dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorRainStorm"
             android:layout_gravity="center"
-            android:ellipsize="end"
-            android:focusable="true"
-            android:lines="1"
-            android:layout_marginLeft="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:textSize="16sp" />
+            >
 
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/add" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_point"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_point" />
 
-</com.daimajia.swipe.SwipeLayout>
+            <TextView
+                android:id="@+id/tv_todo"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:focusable="true"
+                android:lines="1"
+                android:textColor="#EEE"
+                android:textSize="18sp" />
 
-</RelativeLayout>
+        </LinearLayout>
+
+    </com.daimajia.swipe.SwipeLayout>
+
+</LinearLayout>

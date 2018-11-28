@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    
+        <TextView
+            android:id="@+id/day_text"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorGrass"
+            android:text="DEC 26"
+            android:textStyle="bold"
+            android:textColor="@color/colorLinen"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"/>
+        <com.sdsmdg.harjot.rotatingtext.RotatingTextWrapper
+            android:id="@+id/custom_switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@color/colorGrass"
+            android:layout_toRightOf="@id/day_text"/>
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_below="@id/day_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/no_todo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Todo for today!"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</FrameLayout>

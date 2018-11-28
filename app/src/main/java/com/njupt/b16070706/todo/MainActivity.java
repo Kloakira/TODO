@@ -1,16 +1,12 @@
 package com.njupt.b16070706.todo;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.njupt.b16070706.todo.listview.ListViewActivity;
-import com.sdsmdg.harjot.rotatingtext.RotatingTextWrapper;
-import com.sdsmdg.harjot.rotatingtext.models.Rotatable;
+import com.njupt.b16070706.todo.Todo.TodoActivity;
 
 import me.nlmartian.silkcal.DatePickerController;
 import me.nlmartian.silkcal.DayPickerView;
@@ -25,13 +21,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerControl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+     //将它转移到TodoActivity   RotatingText();
 
         btnTodo = findViewById(R.id.btn_todo);
         btnTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this , ListViewActivity.class);
+                Intent intent = new Intent(MainActivity.this , TodoActivity.class);
                 startActivity(intent);
             }
         });
@@ -42,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerControl
 
     }
 
+    //日历要默认实现的方法
     @Override
     public int getMaxYear() {
         return 0;
@@ -51,9 +48,20 @@ public class MainActivity extends AppCompatActivity implements DatePickerControl
     public void onDayOfMonthSelected(int year, int month, int day) {
 
     }
-
     @Override
     public void onDateRangeSelected(SimpleMonthAdapter.SelectedDays<SimpleMonthAdapter.CalendarDay> selectedDays) {
 
     }
+    //上方的滚动字幕，将它转移到TodoActivity
+   /* public void RotatingText () {
+        RotatingTextWrapper rotatingTextWrapper = findViewById(R.id.custom_switcher);
+        rotatingTextWrapper.setSize(20);
+
+        Rotatable rotatable = new Rotatable(Color.parseColor("#FFA036"), 2000, "Make Your Todo Now");
+
+        rotatable.setSize(20);
+        rotatable.setAnimationDuration(500);
+
+        rotatingTextWrapper.setContent("       YO!    ", rotatable);
+    }*/
 }
