@@ -23,6 +23,7 @@ import com.njupt.b16070706.todo.Data.Items;
 import com.njupt.b16070706.todo.Data.GlobalUtil;
 import com.njupt.b16070706.todo.R;
 
+
 public class TodoActivity extends AppCompatActivity {
 
     private EditText editText;
@@ -76,6 +77,7 @@ public class TodoActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     /**点击floatbutton时，新建一个Fragment,其中日期为当前日期*/

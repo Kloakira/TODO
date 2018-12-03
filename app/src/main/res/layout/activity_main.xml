@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:calendar="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorRainStorm"
-    android:weightSum="3">
+    android:background="@drawable/bg3">
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:layout_weight="1">
 
-        <me.nlmartian.silkcal.DayPickerView
-            xmlns:calendar="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/calendar_view"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@android:color/white"
-            calendar:drawRoundRect="false"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="320dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg3"
+        android:text="Todo"
+        android:textColor="@color/colorLight"
+        android:textSize="26sp" />
 
-    <LinearLayout
+
+    <me.nlmartian.silkcal.DayPickerView
+        android:id="@+id/calendar_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center">
+        android:layout_height="342dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="317dp"
+        android:background="@android:color/white"
+        calendar:drawRoundRect="false" />
 
-        <Button
-            android:id="@+id/btn_todo"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/colorAqua"
-            android:paddingBottom="100dp"
-            android:text="Todo"
-            android:textColor="@color/colorRainStorm"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

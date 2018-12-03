@@ -52,11 +52,9 @@ public class MyListAdapter extends BaseAdapter {
     /**一条item的中的部件：内容和删除按钮*/
     static class ViewHolder {
         public TextView tvTodo;
-        public Button btnDelete;
 
         public ViewHolder(View itemView, Items item) {
             tvTodo = itemView.findViewById(R.id.tv_todo);
-            btnDelete = itemView.findViewById(R.id.btn_delete);
 
             tvTodo.setText(item.getTodo());
 

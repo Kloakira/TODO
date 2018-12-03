@@ -11,7 +11,7 @@
             android:id="@+id/day_text"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@color/colorGrass"
+            android:background="#616EBD"
             android:text="DEC 26"
             android:textStyle="bold"
             android:textColor="@color/colorLinen"
@@ -40,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Todo for today!"
+            android:textColor="@color/colorGrass"
             android:textSize="24sp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
