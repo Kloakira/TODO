@@ -80,7 +80,7 @@ public class ItemDatabaseHelper extends SQLiteOpenHelper{
             item.setUuid(uuid);
             item.setDate(date);
             item.setTimeStamp(timeStamp);
-//单条todo加入List中
+            //单条todo加入List中
             items.add(item);
 
         }while (cursor.moveToNext());

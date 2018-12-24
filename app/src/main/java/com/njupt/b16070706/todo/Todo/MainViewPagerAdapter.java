@@ -30,7 +30,7 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter{
         }*/
         dates.add("2018-11-25");
         dates.add("2018-11-26");
-        dates.add(DateUtil.getFormattedDate());
+        //dates.add(DateUtil.getFormattedDate());
 
         for (String date:dates){
             MainFragment fragment = new MainFragment(date);

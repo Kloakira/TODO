@@ -17,12 +17,7 @@
             android:textColor="@color/colorLinen"
             android:gravity="center_vertical"
             android:paddingLeft="15dp"/>
-        <com.sdsmdg.harjot.rotatingtext.RotatingTextWrapper
-            android:id="@+id/custom_switcher"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:background="@color/colorGrass"
-            android:layout_toRightOf="@id/day_text"/>
+
         <ListView
             android:id="@+id/list_view"
             android:layout_below="@id/day_text"

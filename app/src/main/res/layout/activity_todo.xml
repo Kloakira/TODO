@@ -35,7 +35,7 @@
 
             <EditText
                 android:id="@+id/et_todo"
-                android:layout_width="330dp"
+                android:layout_width="280dp"
                 android:layout_height="match_parent"
                 android:paddingLeft="18dp"
                 android:ellipsize="end"
@@ -44,23 +44,34 @@
                 android:lines="1"
                 android:singleLine="true"
                 android:textColor="@color/colorLinen"
-                android:textSize="30sp"
+                android:textSize="26sp"
                 android:background="@null"
                 />
-
+            <Button
+                android:id="@+id/btn_alarm"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_alarm_on_white_24dp"
+                android:layout_gravity="center_vertical"/>
+            <Button
+                android:id="@+id/btn_time"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_dialog_time"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
     <include layout="@layout/content_main"/>
     <android.support.design.widget.FloatingActionButton
-                android:id="@+id/float_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_anchor="@id/app_bar_layout"
-                app:layout_anchorGravity="bottom|end"
-                android:layout_margin="16dp"
-                android:src="@drawable/ic_add"
-                app:rippleColor="#6785C5"
-                app:backgroundTint="#15ABE6"
-                />
+        android:id="@+id/float_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/app_bar_layout"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:rippleColor="#6785C5"
+        app:backgroundTint="@color/colorBlue"
+        />
 
 </android.support.design.widget.CoordinatorLayout>

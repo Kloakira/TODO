@@ -1,6 +1,7 @@
 package com.njupt.b16070706.todo.Todo;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -18,24 +19,42 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.jzxiang.pickerview.TimeWheel;
+import com.jzxiang.pickerview.config.PickerConfig;
+import com.jzxiang.pickerview.data.Type;
+import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.njupt.b16070706.todo.Data.DateUtil;
 import com.njupt.b16070706.todo.Data.Items;
 import com.njupt.b16070706.todo.Data.GlobalUtil;
+import com.jzxiang.pickerview.TimePickerDialog;
+import com.njupt.b16070706.todo.Operations.OnDoubleClickListener;
 import com.njupt.b16070706.todo.R;
+import com.njupt.b16070706.todo.Operations.TimerActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
-public class TodoActivity extends AppCompatActivity {
+public class TodoActivity extends AppCompatActivity implements OnDateSetListener {
 
     private EditText editText;
-    private Button addButton;
+    private Button alarmButton;
+    private Button timeButton;
     private ViewPager viewPager;
     private MainViewPagerAdapter pagerAdapter;
     private FloatingActionButton floatingActionButton;
+    TimePickerDialog mDialogHourMinute;
+    long time;
 
+    //TimePickerDialog mTimePickerDialog = new TimePickerDialog(TodoActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
+        mDialogHourMinute = new TimePickerDialog.Builder()
+                .setType(Type.HOURS_MINS)
+                .setCallBack(this)
+                .build();
 
 
         //不让bar凸起
@@ -59,13 +78,29 @@ public class TodoActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     private void operations() {
         editText = findViewById(R.id.et_todo);//填写todo的编辑框
-        //addButton = findViewById(R.id.btn_add);//新建todo的按钮
+        alarmButton = findViewById(R.id.btn_alarm);//新建todo的按钮
         floatingActionButton = findViewById(R.id.float_button);
-
+        timeButton = findViewById(R.id.btn_time);
         handleFloatButton();
-        //handleAddButton();
         handleEditText();
 
+        alarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                //mTimePickerDialog.showTimePickerDialog();
+                bundle.putLong("MillSeconds", time);
+                Intent intent = new Intent(TodoActivity.this, TimerActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+       timeButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               mDialogHourMinute.show(getSupportFragmentManager(), "hour_minute");
+           }
+       });
 
         //输入完成后让listview所在的部分获得焦点
         viewPager.setOnTouchListener(new View.OnTouchListener() {
@@ -85,50 +120,25 @@ public class TodoActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pagerAdapter.setFragments(DateUtil.getFormattedDate());
-                viewPager.setCurrentItem(pagerAdapter.getLastIndex());//让新建的fragment成为当前显示的窗口
-            }
-        });
-    }
-    /**点击add按钮时：将editText内容新建为新的item*/
-    public void handleAddButton(){
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!TextUtils.isEmpty(editText.getText())){
-                    Items item = new Items();
-                    item.setTodo(editText.getText());
-                    editText.setText("");
-                   /**两种添加item方式：
-                    * 1.通过pagerAdapter的方法获取最后一个Fragment
-                    * 再通过最后一个fragment的addItem方法添加一个item
-                    * 2.通过pagerAdapter的reload方法遍历所有的Fragment
-                    * 再通过单个fragment的reload方法添加一个item
-                    *方法一：最后一个fragment中的listview添加item（我也不知道行不行）
-                    pagerAdapter.getLastFragment().addItem(item);*/
-                    //放入数据库
-                    GlobalUtil.getInstance().databaseHelper.addTodo(item);
-                    /**方法二*/
-                    if(pagerAdapter.getLastFragment().getDate().equals(DateUtil.getFormattedDate()))
-                    {
-                        pagerAdapter.getLastFragment().reload();
-                        pagerAdapter.notifyDataSetChanged();
-                    }else{
-                        pagerAdapter.setFragments(DateUtil.getFormattedDate());
-                        viewPager.setCurrentItem(pagerAdapter.getLastIndex());
-                        pagerAdapter.getLastFragment().reload();
-                        pagerAdapter.notifyDataSetChanged();
-                    }
-                    Log.d("Log:","User Input is "+ item.getTodo());
+                if(pagerAdapter.getLastFragment().getDate().equals(DateUtil.getFormattedDate())){
+
                 }else{
-                    Toast.makeText(getApplicationContext(),"0A0",Toast.LENGTH_SHORT);
+                    pagerAdapter.setFragments(DateUtil.getFormattedDate());
+                    viewPager.setCurrentItem(pagerAdapter.getLastIndex());//让新建的fragment成为当前显示的窗口
                 }
 
             }
         });
-
     }
+
     /**在editText输入回车后直接新建新的item*/
+    /**两种添加item方式：
+     * 1.通过pagerAdapter的方法获取最后一个Fragment
+     * 再通过最后一个fragment的addItem方法添加一个item
+     * 2.通过pagerAdapter的reload方法遍历所有的Fragment
+     * 再通过单个fragment的reload方法添加一个item
+     *方法一：最后一个fragment中的listview添加item（我也不知道行不行）
+     pagerAdapter.getLastFragment().addItem(item);*/
     public void handleEditText(){
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -170,4 +180,10 @@ public class TodoActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onDateSet(com.jzxiang.pickerview.TimePickerDialog timePickerView, long millseconds) {
+        time = millseconds;
+    }
+
 }
